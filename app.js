@@ -23,23 +23,17 @@ function displayMessages(message,type)
     )
 }
 
-
-
-
 document.querySelector("#change").addEventListener("click",convert);
 
 const EuroValue = document.getElementById("amount")
 
-
 function convert()
 {
-    
     const xrh = new XMLHttpRequest();
 
     xrh.open("GET","https://api.exchangerate.host/latest");
 
     xrh.send();
-
 
     xrh.onload = function()
     {
