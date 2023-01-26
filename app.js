@@ -1,6 +1,3 @@
-// ! https://api.exchangerate.host/latest API adress
-
-
 function displayMessages(message,type)
 {
     const cardBody = document.querySelector(".body");
@@ -40,33 +37,24 @@ function convert()
         
         const response = JSON.parse(this.responseText)
 
-        const tl  = response.rates.TRY;
-        const btc = response.rates.BTC;
-        const jpy = response.rates.JPY;
-        const usd = response.rates.USD;
-        const omr = response.rates.OMR;
-        const pyg = response.rates.PYG;
-
-        const amount = Number(document.querySelector("#amount").value);
-
         if(EuroValue.value == "")
         {
             displayMessages("Turuncu Alanı Doldurunuz","danger");
-            
         }
+
         else
         {
-            document.querySelector("#try").value = amount * tl;
-            document.querySelector("#btc").value = amount * btc;
-            document.querySelector("#jpy").value = amount * jpy;
-            document.querySelector("#usd").value = amount * usd;
-            document.querySelector("#omr").value = amount * omr;
-            document.querySelector("#pyg").value = amount * pyg;
-
-            console.log(response)
+            currencyGenerate("try", response.rates.TRY);
+            currencyGenerate("btc", response.rates.BTC);
+            currencyGenerate("jpy", response.rates.JPY);
+            currencyGenerate("usd", response.rates.USD);
+            currencyGenerate("omr", response.rates.OMR);
+            currencyGenerate("pyg", response.rates.PYG);
         } 
+        
+        function currencyGenerate(type, cType){
+            const amount = Number(document.querySelector("#amount").value);
+            document.getElementById(type).value = amount * cType;
+        }
     }
 }
-
-
-
