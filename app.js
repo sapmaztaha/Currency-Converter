@@ -20,6 +20,8 @@ function displayMessages(message,type)
     )
 }
 
+
+
 document.querySelector("#change").addEventListener("click",convert);
 
 const EuroValue = document.getElementById("amount")
@@ -52,9 +54,9 @@ function convert()
             currencyGenerate("pyg", response.rates.PYG);
         } 
         
-        function currencyGenerate(type, cType){
+        function currencyGenerate(elementID, currencyType){
             const amount = Number(document.querySelector("#amount").value);
-            document.getElementById(type).value = amount * cType;
+            document.getElementById(elementID).value = amount * currencyType;
         }
     }
 }
